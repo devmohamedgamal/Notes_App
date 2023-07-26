@@ -1,10 +1,24 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/custom_app_bar.dart';
+
 class NotesView extends StatelessWidget {
   const NotesView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold(
+      body: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: 28),
+        child: Column(
+          children: [
+            SizedBox(
+              height: 50,
+            ),
+            CustomAppBar(),
+          ],
+        ),
+      ),
+    );
   }
 }
