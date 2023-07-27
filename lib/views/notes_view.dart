@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'widgets/add_note_widget.dart';
 import 'widgets/custom_app_bar.dart';
 import 'widgets/custom_note_item.dart';
 import 'widgets/note_list_view.dart';
@@ -11,8 +12,19 @@ class NotesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(FontAwesomeIcons.plus),
+        onPressed: () {
+          showModalBottomSheet(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(25),
+                ),
+              ),
+              context: context,
+              builder: (context) {
+                return const AddNoteWidget();
+              });
+        },
+        child: const Icon(FontAwesomeIcons.plus),
       ),
       body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 28),
@@ -23,7 +35,7 @@ class NotesView extends StatelessWidget {
             ),
             CustomAppBar(),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Expanded(child: NoteListView()),
           ],
