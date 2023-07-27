@@ -33,7 +33,7 @@ class NotesView extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
-            CustomAppBar(),
+            CustomAppBar(text: 'Notes',icon: Icons.search,),
             SizedBox(
               height: 10,
             ),

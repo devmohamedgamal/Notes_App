@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../contants.dart';
+
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
       {super.key,
@@ -12,6 +14,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      cursorColor: kPrimaryColor,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
           vertical: vertical,
@@ -26,13 +29,13 @@ class CustomTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(
-            color: Colors.blue.withOpacity(0.7),
+            color: kPrimaryColor,
           ),
         ),
         labelText: text,
-        labelStyle: const TextStyle(
+        labelStyle: TextStyle(
           fontSize: 22,
-          color: Color(0xFF54EBD7),
+          color: kPrimaryColor,
         ),
       ),
     );

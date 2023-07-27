@@ -8,11 +8,9 @@ class AddNoteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: double.infinity,
-      height: 600,
-      child:  Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      child: SingleChildScrollView(
         child: Column(
           children: [
             CustomTextField(text: 'Title', horizontal: 10, vertical: 20),
@@ -21,7 +19,7 @@ class AddNoteWidget extends StatelessWidget {
             ),
             CustomTextField(text: 'Content', horizontal: 10, vertical: 100),
             SizedBox(
-              height: 130,
+              height: 40,
             ),
             CustomBtn(),
           ],
