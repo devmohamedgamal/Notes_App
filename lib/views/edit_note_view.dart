@@ -9,7 +9,7 @@ class EditNoteView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.symmetric(horizontal: 28),
         child: Column(
           children: [
             SizedBox(
