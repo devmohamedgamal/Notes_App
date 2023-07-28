@@ -22,7 +22,7 @@ class EditNoteView extends StatelessWidget {
             SizedBox(
               height: 30,
             ),
-            CustomTextField(
+            CustomTextFormField(
               text: 'Title',
               vertical: 20,
               horizontal: 10,
@@ -30,7 +30,7 @@ class EditNoteView extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            CustomTextField(
+            CustomTextFormField(
               text: 'Content',
               vertical: 80,
               horizontal: 10,
