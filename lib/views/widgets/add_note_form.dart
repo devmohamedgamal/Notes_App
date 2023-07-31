@@ -6,6 +6,7 @@ import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:note_app/models/note_model.dart';
 
 import 'Custom_Text_Field.dart';
+import 'color_list_view.dart';
 import 'custom_btn.dart';
 
 class AddNoteForm extends StatefulWidget {
@@ -51,6 +52,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           const SizedBox(
             height: 40,
           ),
+          const ColorsListView(),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomBtn(
