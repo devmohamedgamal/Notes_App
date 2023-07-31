@@ -28,7 +28,7 @@ class CustomNoteItem extends StatelessWidget {
         padding:
             const EdgeInsets.only(top: 28, bottom: 28, left: 16, right: 10),
         decoration: BoxDecoration(
-          color: const Color(0xFFFFCD7B),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -53,7 +53,9 @@ class CustomNoteItem extends StatelessWidget {
                 ),
               ),
               trailing: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    note.delete();
+                  },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
                     color: Colors.black,
