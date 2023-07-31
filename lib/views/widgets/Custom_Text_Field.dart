@@ -9,14 +9,21 @@ class CustomTextFormField extends StatelessWidget {
     required this.horizontal,
     required this.vertical,
     this.onSaved,
+    this.onChanged,
+    this.editText = "",
   });
   final String text;
   final double horizontal, vertical;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
+  final String editText;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: TextEditingController(
+        text: editText,
+      ),
       validator: (value) {
         if (value?.isEmpty ?? true) {
           return "Required";
@@ -24,6 +31,7 @@ class CustomTextFormField extends StatelessWidget {
           return null;
         }
       },
+      onChanged: onChanged,
       onSaved: onSaved,
       cursorColor: kPrimaryColor,
       decoration: InputDecoration(

@@ -6,14 +6,7 @@ import '../../models/note_model.dart';
 import '../edit_note_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  // @override
-  // void initState() {
-  //   BlocProvider.of<NotesCubit>(context).fechAllNote();
-  //   super.initState();
-  // }
-
   final NoteModel note;
-
   const CustomNoteItem({super.key, required this.note});
 
   @override
@@ -21,7 +14,9 @@ class CustomNoteItem extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return EditNoteView();
+          return EditNoteView(
+            note: note,
+          );
         }));
       },
       child: Container(
@@ -55,6 +50,7 @@ class CustomNoteItem extends StatelessWidget {
               trailing: IconButton(
                   onPressed: () {
                     note.delete();
+                    BlocProvider.of<NotesCubit>(context).fechAllNote();
                   },
                   icon: const Icon(
                     FontAwesomeIcons.trash,

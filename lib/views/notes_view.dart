@@ -1,25 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:note_app/cubits/notes_cubit/notes_cubit.dart';
+import 'package:note_app/views/widgets/notes_view_body.dart';
 import 'widgets/add_note_widget.dart';
-import 'widgets/custom_app_bar.dart';
-import 'widgets/note_list_view.dart';
 
-class NotesView extends StatefulWidget {
-  @override
-  State<NotesView> createState() => _NotesViewState();
-}
-
-class _NotesViewState extends State<NotesView> {
-  @override
-  void initState() {
-    BlocProvider.of<NotesCubit>(context).fechAllNote();
-  }
-
+class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
@@ -36,24 +24,7 @@ class _NotesViewState extends State<NotesView> {
         },
         child: const Icon(FontAwesomeIcons.plus),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 28),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 50,
-            ),
-            const CustomAppBar(
-              text: 'Notes',
-              icon: Icons.search,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(child: NoteListView()),
-          ],
-        ),
-      ),
+      body: const NotesViewBody(),
     );
   }
 }
