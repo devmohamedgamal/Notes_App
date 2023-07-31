@@ -1,10 +1,20 @@
 import 'package:flutter/Material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import '../../cubits/notes_cubit/notes_cubit.dart';
+import '../../models/note_model.dart';
 import '../edit_note_view.dart';
 
 class CustomNoteItem extends StatelessWidget {
-  const CustomNoteItem({super.key});
+  // @override
+  // void initState() {
+  //   BlocProvider.of<NotesCubit>(context).fechAllNote();
+  //   super.initState();
+  // }
+
+  final NoteModel note;
+
+  const CustomNoteItem({super.key, required this.note});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +35,9 @@ class CustomNoteItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Flutter Tips',
-                style: TextStyle(
+              title: Text(
+                note.title,
+                style: const TextStyle(
                   fontSize: 28,
                   color: Colors.black,
                 ),
@@ -35,7 +45,7 @@ class CustomNoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 child: Text(
-                  'Build Your Career With Mohamed Gamal',
+                  note.content,
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.black.withOpacity(0.5),
@@ -50,7 +60,7 @@ class CustomNoteItem extends StatelessWidget {
                   )),
             ),
             Text(
-              'May 21, 2023',
+              note.date,
               style: TextStyle(color: Colors.black.withOpacity(0.4)),
             ),
           ],
