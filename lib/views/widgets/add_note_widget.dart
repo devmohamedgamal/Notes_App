@@ -1,11 +1,7 @@
 import 'package:flutter/Material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import 'package:note_app/cubits/cubit/add_note_cubit.dart';
-
-import 'Custom_Text_Field.dart';
+import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'add_note_form.dart';
-import 'custom_btn.dart';
 
 class AddNoteWidget extends StatelessWidget {
   const AddNoteWidget({super.key});
@@ -25,9 +21,13 @@ class AddNoteWidget extends StatelessWidget {
         builder: (context, state) {
           return AbsorbPointer(
             absorbing: state is AddNoteLoading ? true : false,
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-              child: SingleChildScrollView(child: AddNoteForm()),
+            child: Padding(
+              padding: EdgeInsets.only(
+                  left: 16,
+                  right: 16,
+                  top: 20,
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: const SingleChildScrollView(child: AddNoteForm()),
             ),
           );
         },

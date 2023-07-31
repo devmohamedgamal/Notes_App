@@ -10,27 +10,30 @@ class CustomBtn extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: kPrimaryColor, borderRadius: BorderRadius.circular(8)),
-        child: Center(
-          child: isLoading
-              ? SizedBox(
-                  height: 27,
-                  width: 27,
-                  child: const CircularProgressIndicator(
-                    color: Colors.black,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Container(
+          width: double.infinity,
+          height: 50,
+          decoration: BoxDecoration(
+              color: kPrimaryColor, borderRadius: BorderRadius.circular(8)),
+          child: Center(
+            child: isLoading
+                ? SizedBox(
+                    height: 27,
+                    width: 27,
+                    child: const CircularProgressIndicator(
+                      color: Colors.black,
+                    ),
+                  )
+                : const Text(
+                    'Add',
+                    style: TextStyle(
+                      fontSize: 24,
+                      color: Colors.black,
+                    ),
                   ),
-                )
-              : const Text(
-                  'Add',
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Colors.black,
-                  ),
-                ),
+          ),
         ),
       ),
     );
