@@ -6,14 +6,13 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.text,
-    required this.horizontal,
-    required this.vertical,
     this.onSaved,
     this.onChanged,
     this.editText = "",
+    required this.maxLine,
   });
   final String text;
-  final double horizontal, vertical;
+  final int maxLine;
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
   final String editText;
@@ -34,11 +33,8 @@ class CustomTextFormField extends StatelessWidget {
       onChanged: onChanged,
       onSaved: onSaved,
       cursorColor: kPrimaryColor,
+      maxLines: maxLine,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(
-          vertical: vertical,
-          horizontal: horizontal,
-        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide: BorderSide(

@@ -1,4 +1,9 @@
 import 'package:flutter/Material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note_app/cubits/add_note_cubit/add_note_cubit.dart';
+
+import '../../contants.dart';
+import '../../models/note_model.dart';
 
 class ColorsItem extends StatelessWidget {
   const ColorsItem({super.key, required this.isActive, required this.color});
@@ -35,18 +40,6 @@ class ColorsListView extends StatefulWidget {
 
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
-  List<Color> colors = const [
-    Color(0xFF242038),
-    Color(0xFF725AC1),
-    Color(0xFF8D86C9),
-    Color(0xFFCAC4CE),
-    Color(0xFFF7ECE1),
-    Color(0xFF000000),
-    Color(0xFF1098F7),
-    Color(0xFF5E548E),
-    Color(0xFFDDFCAD),
-    Color(0xFFC8E087),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -56,15 +49,58 @@ class _ColorsListViewState extends State<ColorsListView> {
         height: 28 * 2,
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: colors.length,
+            itemCount: kColors.length,
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
                   currentIndex = index;
+                  BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
                   setState(() {});
                 },
                 child: ColorsItem(
-                  color: colors[index],
+                  color: kColors[index],
+                  isActive: currentIndex == index,
+                ),
+              );
+            }),
+      ),
+    );
+  }
+}
+
+class EditColorsListView extends StatefulWidget {
+  const EditColorsListView({super.key, required this.note});
+  final NoteModel note;
+  @override
+  State<EditColorsListView> createState() => _EditColorsListViewState();
+}
+
+class _EditColorsListViewState extends State<EditColorsListView> {
+  late int currentIndex;
+  @override
+  void initState() {
+    currentIndex = kColors.indexOf(Color(widget.note.color));
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 40, top: 40),
+      child: SizedBox(
+        height: 28 * 2,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: kColors.length,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  currentIndex = index;
+                  widget.note.color = kColors[index].value;
+                  setState(() {});
+                },
+                child: ColorsItem(
+                  color: kColors[index],
                   isActive: currentIndex == index,
                 ),
               );

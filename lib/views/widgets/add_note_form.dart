@@ -31,9 +31,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
       child: Column(
         children: [
           CustomTextFormField(
+            maxLine: 1,
             text: 'Title',
-            horizontal: 10,
-            vertical: 20,
             onSaved: (value) {
               title = value;
             },
@@ -43,8 +42,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
           CustomTextFormField(
             text: 'Content',
-            horizontal: 10,
-            vertical: 100,
+            maxLine: 5,
             onSaved: (value) {
               content = value;
             },
